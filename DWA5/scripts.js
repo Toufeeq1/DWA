@@ -16,7 +16,7 @@ form.addEventListener("submit", (event) => {
     if ( dividend <0 || divider <0 ){
         const consoleError = new Error('Division not performed. Invalid number provied. Try again');
          console.error(consoleError)
-         document.querySelector("[data-result]").textContent = ' Error : Division not performed. Invalid number provided. Try again.' 
+         document.querySelector("[data-result]").textContent = consoleError
          return
     };
 
