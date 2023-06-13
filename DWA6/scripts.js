@@ -349,7 +349,7 @@ for (const [id, name] of Object.entries(authors)) {
   authorsHtml.appendChild(element);
 }
 
-selectors.dataSearchAuthors.appendChild(authorsHtml); ///
+selectors.dataSearchAuthors.appendChild(authorsHtml); 
 
 // Check the preferred color scheme and set theme accordingly
 if (
@@ -475,7 +475,7 @@ selectors.dataSearchForm.addEventListener("submit", (event) => {
     element.classList = "preview";
     element.setAttribute("data-preview", id);
 
-    element.innerHTML = previewHtml(image, title, authors, author)
+    element.innerHTML = previewHtml(image, title, authors, author) 
 
     newItems.appendChild(element);
   }
