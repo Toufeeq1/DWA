@@ -1,3 +1,4 @@
+// @ts-check
 // // Fully working scripts.js file
 
 // import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
@@ -237,6 +238,16 @@
 //     }
 // })
 
+/**
+ * @typedef {Object} selectors - html element data attribute values
+
+ * 
+ */
+
+/**
+ * Html object containing Html data Attributes
+ * @type {selectors}
+ */
 const selectors = {
   dataListItems: document.querySelector("[data-list-items]"),
   dataSearchGenres: document.querySelector("[data-search-genres]"),
@@ -274,6 +285,7 @@ const starting = document.createDocumentFragment();
 // Generate book previews for the first page
 for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
   const element = document.createElement("button");
+  // @ts-ignore
   element.classList = "preview";
   element.setAttribute("data-preview", id);
 
@@ -344,7 +356,9 @@ if (
 // Set the text and state of the "Show more" button
 selectors.dataListButton.innerText = `Show more (${books.length - BOOKS_PER_PAGE
   })`;
-selectors.dataListButton.disabled = (matches.length - (page * BOOKS_PER_PAGE ))> 0;
+const remaining = (matches.length - (page * BOOKS_PER_PAGE ))> 0;
+// @ts-ignore
+selectors.dataListButton.disabled = remaining <= 0
 
 // Update the remaining books count in the "Show more" button
 selectors.dataListButton.innerHTML = `
@@ -417,7 +431,9 @@ selectors.dataSearchForm.addEventListener("submit", (event) => {
     }
 
     if (
+      // @ts-ignore
       (filters.title.trim() === "" ||
+        // @ts-ignore
         book.title.toLowerCase().includes(filters.title.toLowerCase())) &&
       (filters.author === "any" || book.author === filters.author) &&
       genreMatch
@@ -443,6 +459,7 @@ selectors.dataSearchForm.addEventListener("submit", (event) => {
   // Generate new book previews based on the filtered results
   for (const { author, id, image, title } of result.slice(0, BOOKS_PER_PAGE)) {
     const element = document.createElement("button");
+    // @ts-ignore
     element.classList = "preview";
     element.setAttribute("data-preview", id);
 
@@ -493,6 +510,7 @@ selectors.dataListButton.addEventListener("click", () => {
     (page + 1) * BOOKS_PER_PAGE
   )) {
     const element = document.createElement("button");
+    // @ts-ignore
     element.classList = "preview";
     element.setAttribute("data-preview", id);
 
