@@ -30,13 +30,17 @@ Header
  **************************/
 
  .header{
-    text-align: center;
+    display: flex;
  }
 
  .header_title{
     font-size: 3rem;
     font-weight: 900;
     color:var(--color-light-grey) ;
+ }
+
+ s1-avatar{
+
  }
  /**************************
  Controls  
