@@ -31,6 +31,8 @@ Header
 
  .header{
     display: flex;
+    justify-content: space-between;
+    margin: 5px;
  }
 
  .header_title{
@@ -39,8 +41,10 @@ Header
     color:var(--color-light-grey) ;
  }
 
- s1-avatar{
-
+ sl-avatar{
+    margin-top: 50px;
+    margin-right: 20px;
+   
  }
  /**************************
  Controls  
