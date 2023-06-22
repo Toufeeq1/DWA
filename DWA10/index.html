@@ -23,34 +23,15 @@
         <sl-avatar label="User avatar"></sl-avatar>
 
     </header>
-    <!-- <aside class="controls">
-        <label>
-            <span>Display</span>
-            <select>
-                <option>Single</option>
-                <option>Multiple</option>
-            </select>
-        </label>
-
-        <label>
-            <span>Counter</span>
-            <select>
-                <option>Counter 1</option>
-                <option>Counter 2</option>
-                <option>Counter 3</option>
-            </select>
-        </label>
-
-        <button>Settings</button>
-
-    </aside> -->
+    
 
     <main class="counter">
         <input data-key="number" class="counter_value" readonly value="0" />
         <div class="counter_actions">
-            <s1-button data-key="subtract" class="counter_button counter_button_first">-</s1-button>
-            <s1-button data-key="add" class="counter_button who">+</s1-button>
+            <sl-button data-key="subtract" size='large' class="counter_button counter_button_first button">-</sl-button>
+            <sl-button data-key="add" size='large' class="counter_button button">+</sl-button>
         </div>
+        <sl-button data-key="reset" variant="neutral" class="reset">Reset</sl-button>
     </main>
 
     <footer class="footer">
