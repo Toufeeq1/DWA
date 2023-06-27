@@ -3,8 +3,12 @@ import {LitElement,css, html} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/all/l
 
 export class MyElement extends LitElement {
     static properties = {
-      greeting: {},
-      planet: {},
+        count: {type:Number},
+        minReach: {type:Boolean},
+        maxReach: {type:Boolean},
+        reset: {type: Boolean},
+        
+        
     };
     // Styles are scoped to this element: they won't conflict with styles
     // on the main page or in other components. Styling API can be exposed
@@ -27,8 +31,113 @@ export class MyElement extends LitElement {
         background: lightgray;
       }
       .planet {
-        color: var(--planet-color, blue);
+        color: #ffffff;
       }
+      .controls{
+        background: yellow;
+     }
+     /**************************
+     Counter  
+     *************************/
+    .counter{
+        background: #33333d;
+    
+    }
+    
+    .counter_value{
+        width: 100%;
+        height: 15rem;
+        text-align: center;
+        font-size: 6rem;
+        font-weight: 900;
+        background: none;
+        color: #ffffff
+        border-width: 0;
+        border-bottom: 1px solid #9ca3ae;
+    }
+    
+    .counter_actions{
+        display: flex;
+    }
+    
+    
+    .button{
+        background: none;
+        width: 50%;
+        border-width: 0;
+        color: #ffffff;
+        font-size: 3rem;
+        /* height: 10rem; */
+        border-bottom: 1px solid #9ca3ae;
+        transition: transform 0.1s;
+        transform: translateY(0);
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .counter_button:disabled{
+        opacity: 0.2;
+    
+    }
+    
+    
+    .counter_button:active{
+        background: #424250;
+        transform: translateY(2%);
+    }
+    
+    .counter_button_first{
+        border-right: 1px solid #9ca3ae;
+    }
+    
+    .reset{
+        width: 100%;
+    
+    }
+    .footer{
+        background:#9ca3ae;
+        color: var(--color-light-grey);
+        padding: 2rem;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    .footer_link{
+        color: #ffffff;
+    
+    }
+    html{
+        height: 100vh;
+    }
+    
+    body{
+        margin: 0;
+        background-color: #424250;
+        color: #ffffff ;
+        font-family: Roboto,Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    
+    /***************************
+    Header
+     **************************/
+    
+     .header{
+        display: flex;
+        justify-content: space-between;
+        margin: 5px;
+     }
+    
+     .header_title{
+        font-size: 3rem;
+        font-weight: 900;
+        color:#9ca3ae ;
+     }
     `;
   
     constructor() {
@@ -46,12 +155,13 @@ export class MyElement extends LitElement {
     // and child nodes/text.
     render() {
       return html`
+      <body>
       <input data-key="number" class="counter_value" readonly value="0" />
       <div class="counter_actions">
-          <sl-button data-key="subtract" size='large' class="counter_button counter_button_first button">-</sl-button>
-          <sl-button data-key="add" size='large' class="counter_button button">+</sl-button>
+          <button data-key="subtract" size='large' class="counter_button counter_button_first button">-</button>
+          <button data-key="add" size='large' class="counter_button button">+</button>
       </div>
-      <sl-button data-key="reset" variant="neutral" class="reset">Reset</sl-button>
+      <button data-key="reset" variant="neutral" class="reset">Reset</button>
   </main>
 
   <footer class="footer">
@@ -59,6 +169,7 @@ export class MyElement extends LitElement {
       practice project for learning
       JavaScript.
   </footer>
+  </
       `;
     }
   
@@ -69,4 +180,5 @@ export class MyElement extends LitElement {
     }
   }
   customElements.define('my-element', MyElement);
+  
   
