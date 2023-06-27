@@ -6,7 +6,7 @@ export class MyElement extends LitElement {
         count: {type:Number},
         minReach: {type:Boolean},
         maxReach: {type:Boolean},
-        reset: {type: Boolean},
+        resetinfo: {type: Boolean},
     };
    
     static styles = css`
@@ -160,17 +160,22 @@ export class MyElement extends LitElement {
             this.count -= 1;
             this.maxReach = false;
             this.minReach = false;
-            this.reset = false;
+            this.reset = f;
         } else {
             this.minReach = true;
         }
     }
 
-    reset() {
-        this.count = 0
+    resetinfo() {
+        if(this.count>0 || this.count <0) {
+            console.log(this.reset)
         this.maxReach = false;
         this.minReach = false;
-        this.reset = true;
+        this.resetinfo = true;
+        this.count = 0
+        } else {
+            this.reset = true
+        }
     }
 
     render() {
@@ -178,12 +183,12 @@ export class MyElement extends LitElement {
       <main class= "counter">
       <input data-key="number" class="counter_value" readonly value=${this.count} />
       <div class="counter_actions">
-          <button @click=${this.subtract} data-key="subtract" size='large' class="counter_button counter_button_first button" >-</button>
-          <button @click=${this.add} data-key="add" size='large' class="counter_button button" >+</button>
+          <button @click=${this.subtract} ?disabled="${this.minReach} data-key="subtract" size='large' class="counter_button counter_button_first button" >-</button>
+          <button @click=${this.add} ?disabled=${this.maxReach}data-key="add" size='large' class="counter_button button" >+</button>
       </div>
       
   </main>
-<button @click=${this.reset} data-key="reset"  class="reset" >Reset</button>
+<button @click=${this.resetinfo} data-key="reset"  class="reset" >Reset</button>
   <footer class="footer">
       Inspired By <a class="footer_link" href="https://tallycount.app/">Tally Count</a>. Note this is a student
       practice project for learning
