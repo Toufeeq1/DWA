@@ -142,26 +142,49 @@ export class MyElement extends LitElement {
   
     constructor() {
       super();
-      // Define reactive properties--updating a reactive property causes
-      // the component to update.
-      this.greeting = '+';
-      this.planet = '-';
+      this.count = 0;
+      this.minReach = false;
+      this.maxReach = false;
     }
-  
-    // The render() method is called any time reactive properties change.
-    // Return HTML in a string template literal tagged with the `html`
-    // tag function to describe the component's internal DOM.
-    // Expressions can set attribute values, property values, event handlers,
-    // and child nodes/text.
+
+    add() {
+        if (this.count< 15) {
+            this.count += 1;
+            this.minReach =false;
+            this.maxReach = false;
+            this.reset =false;
+        } else {
+            this.maxReach = true;
+        }
+    }
+
+    subtract() {
+        if (this.count>-15) {
+            this.count -= 1;
+            this.maxReach = false;
+            this.minReach = false;
+            this.reset = false;
+        } else {
+            this.minReach = true;
+        }
+    }
+
+    reset() {
+        this.count = 0;
+        this.maxReach = false;
+        this.minReach = false;
+        this.reset = true;
+    }
+
     render() {
       return html`
       <body>
-      <input data-key="number" class="counter_value" readonly value="0" />
+      <input data-key="number" class="counter_value" readonly value=${this.count} />
       <div class="counter_actions">
-          <button data-key="subtract" size='large' class="counter_button counter_button_first button">-</button>
-          <button data-key="add" size='large' class="counter_button button">+</button>
+          <button @click=${this.subtract} data-key="subtract" size='large' class="counter_button counter_button_first button" >+</button>
+          <button @click=${this.add} data-key="add" size='large' class="counter_button button" >+</button>
       </div>
-      <button data-key="reset" variant="neutral" class="reset">Reset</button>
+      <button @click=${this.reset} data-key="reset" variant="neutral" class="reset" >Reset</button>
   </main>
 
   <footer class="footer">
