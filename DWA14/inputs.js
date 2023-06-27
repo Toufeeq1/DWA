@@ -181,7 +181,7 @@ export class MyElement extends LitElement {
       <body>
       <input data-key="number" class="counter_value" readonly value=${this.count} />
       <div class="counter_actions">
-          <button @click=${this.subtract} data-key="subtract" size='large' class="counter_button counter_button_first button" >+</button>
+          <button @click=${this.subtract} data-key="subtract" size='large' class="counter_button counter_button_first button" >-</button>
           <button @click=${this.add} data-key="add" size='large' class="counter_button button" >+</button>
       </div>
       <button @click=${this.reset} data-key="reset" variant="neutral" class="reset" >Reset</button>
