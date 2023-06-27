@@ -7,12 +7,8 @@ export class MyElement extends LitElement {
         minReach: {type:Boolean},
         maxReach: {type:Boolean},
         reset: {type: Boolean},
-        
-        
     };
-    // Styles are scoped to this element: they won't conflict with styles
-    // on the main page or in other components. Styling API can be exposed
-    // via CSS custom properties.
+   
     static styles = css`
     :root{
         --color-green:#31c48d;
@@ -145,7 +141,7 @@ export class MyElement extends LitElement {
       this.count = 0;
       this.minReach = false;
       this.maxReach = false;
-      this.reset =false;
+      
     }
 
     add() {
@@ -153,7 +149,7 @@ export class MyElement extends LitElement {
             this.count += 1;
             this.minReach =false;
             this.maxReach = false;
-            this.reset =false;
+            this.reset = false;
         } else {
             this.maxReach = true;
         }
@@ -171,30 +167,28 @@ export class MyElement extends LitElement {
     }
 
     reset() {
-        if (this.count !== 0){
+        this.count = 0
         this.maxReach = false;
         this.minReach = false;
         this.reset = true;
-    } 
     }
 
     render() {
       return html`
-      <body>
+      <main class= "counter">
       <input data-key="number" class="counter_value" readonly value=${this.count} />
       <div class="counter_actions">
           <button @click=${this.subtract} data-key="subtract" size='large' class="counter_button counter_button_first button" >-</button>
           <button @click=${this.add} data-key="add" size='large' class="counter_button button" >+</button>
       </div>
-      <button @click=${this.reset} data-key="reset" variant="neutral" class="reset" >Reset</button>
+      
   </main>
-
+<button @click=${this.reset} data-key="reset"  class="reset" >Reset</button>
   <footer class="footer">
       Inspired By <a class="footer_link" href="https://tallycount.app/">Tally Count</a>. Note this is a student
       practice project for learning
       JavaScript.
   </footer>
-  </
       `;
     }
   
