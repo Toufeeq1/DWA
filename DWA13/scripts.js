@@ -83,12 +83,7 @@ console.log( products.filter((item) => {
     )
 )
 
-/**
- * - Use both filter() and map() to convert all prices that are strings to numbers, and remove
- * all products from that array that do not have prices. 
- * - After this has been done, then use reduce() to calculate the combined price of all remaining 
- * products
- */
+
 console.log(
     
 
