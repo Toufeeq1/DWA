@@ -145,10 +145,11 @@ export class MyElement extends LitElement {
       this.count = 0;
       this.minReach = false;
       this.maxReach = false;
+      this.reset =false;
     }
 
     add() {
-        if (this.count< 15) {
+        if (this.count < 15) {
             this.count += 1;
             this.minReach =false;
             this.maxReach = false;
@@ -159,7 +160,7 @@ export class MyElement extends LitElement {
     }
 
     subtract() {
-        if (this.count>-15) {
+        if (this.count > -15) {
             this.count -= 1;
             this.maxReach = false;
             this.minReach = false;
@@ -170,10 +171,11 @@ export class MyElement extends LitElement {
     }
 
     reset() {
-        this.count = 0;
+        if (this.count !== 0){
         this.maxReach = false;
         this.minReach = false;
         this.reset = true;
+    } 
     }
 
     render() {
@@ -196,12 +198,9 @@ export class MyElement extends LitElement {
       `;
     }
   
-    // Event handlers can update the state of @properties on the element
-    // instance, causing it to re-render
-    togglePlanet() {
-      this.planet = this.planet === 'World' ? 'Mars' : 'World';
+    
     }
-  }
+  
   customElements.define('my-element', MyElement);
   
   
